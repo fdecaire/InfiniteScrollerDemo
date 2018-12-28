@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
 using InfiniteScrollerDemo.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InfiniteScrollerDemo.Controllers
 {
@@ -15,29 +11,24 @@ namespace InfiniteScrollerDemo.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public ItemBoxViewModel LoadItemsBottom(int topItemNumber)
         {
-            ViewData["Message"] = "Your application description page.";
+            var tempPictures = new List<PictureData>();
 
-            return View();
-        }
+            for (var i = 0; i < 8; i++)
+            {
+                tempPictures.Add(new PictureData
+                {
+                    Url = $"dog{i}.jpg",
+                    Summary = $"summary of picture {topItemNumber++}"
+                });
+            }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return new ItemBoxViewModel
+            {
+                Pictures = tempPictures,
+                Status = "OK"
+            };
         }
     }
 }

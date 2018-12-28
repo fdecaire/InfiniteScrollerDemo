@@ -1,0 +1,22 @@
+﻿.dog-picture-box {
+    width: 312px;
+    height: 312px;
+    float: left;
+    padding: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+}
+
+.dog-picture {
+    display: block;
+    width: 300px;
+    height: 300px;
+}
+
+.infinite-container {
+    width: 1288px !important;
+    padding: 0;
+    padding-top: 75px;
+    padding-bottom: 50px;
+}
+
